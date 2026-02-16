@@ -1,7 +1,8 @@
 import { Card, Typography } from "antd";
 import React from "react";
+import Paragraph from "antd/lib/typography/Paragraph";
 
-const { Title, Text } = Typography;
+const { Title } = Typography;
 
 type MigrationToolWizardCardProps = {
     cardTitle: string
@@ -24,8 +25,7 @@ export default function MigrationToolWizardCard({
             hoverable
             onClick={onClick}
             style={{
-                width: 320,
-                height: 220,
+                height: 210,
                 cursor: "pointer",
                 display: "flex",
                 flexDirection: "column",
@@ -34,17 +34,20 @@ export default function MigrationToolWizardCard({
                 transition: "all 0.2s ease",
             }}
         >
-            <div style={{ marginBottom: 16, textAlign: "center" }}>
+            <div style={{ textAlign: "center" }}>
                 <Icon style={{ fontSize: 48 }} />
             </div>
 
-            <Title level={5} style={{ marginBottom: 8, textAlign: "center" }}>
+            <Title level={5} style={{ marginBottom: 4, textAlign: "center" }}>
                 {cardTitle}
             </Title>
 
-            <Text type="secondary" style={{ textAlign: "center" }}>
+            <Paragraph
+                type="secondary"
+                style={{ textAlign: "center", width: "100%" }}
+            >
                 {description}
-            </Text>
+            </Paragraph>
         </Card>
     );
 }
