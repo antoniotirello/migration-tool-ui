@@ -1,13 +1,14 @@
 import {Button, Col, Row, Space} from "antd";
-import {useMigrationToolProvider} from "./providers/MigrationToolProvider.tsx";
 import {CaretRightOutlined, CloseOutlined, LeftOutlined} from "@ant-design/icons";
 import {MigrationToolStates} from "../machines/MigrationToolStates.ts";
-import {MigrationToolEventType} from "../machines/MigrationToolEvents.ts";
+import {MigrationToolEvent, MigrationToolEventType} from "../machines/MigrationToolEvents.ts";
 
-export default function MigrationToolFooter() {
+type MigrationToolFooterProps = {
+    state: MigrationToolStates
+    send: (event: MigrationToolEvent) => void
+}
 
-    const { state, send } = useMigrationToolProvider();
-
+export default function MigrationToolFooter({ state, send }: MigrationToolFooterProps) {
     return(
         <Row justify="space-between" align="middle">
             <Col>
@@ -15,13 +16,13 @@ export default function MigrationToolFooter() {
                     <Button danger  icon={<CloseOutlined />}>
                         Exit
                     </Button>
-                    <div>Current step: {typeof state.value === "string" ? state.value : JSON.stringify(state.value)}</div>
+                    <div>Current step: {state}</div>
                 </Space>
             </Col>
             <Col>
                 <Space>
                     <Button icon={<LeftOutlined />} disabled={
-                        state.matches(MigrationToolStates.Idle)
+                        state === MigrationToolStates.Idle
                     } onClick={() => send({ type: MigrationToolEventType.CANCEL })}>
                         Back
                     </Button>
