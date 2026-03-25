@@ -4,7 +4,8 @@ import App from "./App"
 import {ConfigProvider} from "antd"
 import 'antd/dist/antd.css'
 import "./App.css"
-import {MigrationToolProvider} from "./components/providers/MigrationToolProvider.tsx";
+import {Provider} from "react-redux";
+import {store} from "./app/store.ts";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -16,9 +17,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
               },
           }}
       >
-          <MigrationToolProvider>
+          <Provider store={store}>
             <App />
-          </MigrationToolProvider>
+          </Provider>
       </ConfigProvider>
   </React.StrictMode>,
 )
