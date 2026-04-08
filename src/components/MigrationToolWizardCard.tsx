@@ -1,8 +1,7 @@
 import { Card, Typography } from "antd";
 import React from "react";
-import Paragraph from "antd/lib/typography/Paragraph";
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 
 type MigrationToolWizardCardProps = {
     cardTitle: string
